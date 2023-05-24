@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Index/services</title>
+    <style>
+        h1{
+            position: sticky;
+            margin-left: 100px;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .grid-container {
+            .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+        }
+
+        .column{
+            text-align: justify
+        }
+
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        label{
+            margin-left: 100px;
+        }
+
+        .container-nav {
+            display: flex;
+            padding: 10px;
+            height: 50px;
+            background-color: black;
+        }
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+        }
+
+
+        li>a {
+            padding: 8px 24px;
+            
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+
+        a {
+            color: white;
+            text-decoration:none;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .button-menu-toggle {
+            display: none;
+        }
+
+
+        @media (max-width: 768px) {
+            .column {
+                flex: 100%;
+            }
+
+
+        .nav-links {
+            display: none;
+        }
+
+
+        .button-menu-toggle {
+            display: block;
+            background-color: white;
+            border:none;
+            border-radius: 50px;
+            padding: 0 24px;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .nav-links.nav-links-responsive {
+            position: absolute;
+            display: flex;
+            background-color: rgba(20,20,20,0.95);
+            width: 100%;
+            height: 100%;
+            top: 70px;
+            left: 0;
+            flex-direction: column;
+            padding-top: 200px;
+            align-items: center;
+            gap:70px;
+            font-size: 40px;
+        }
+
+        .am{
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+        .sk{
+            margin-right: 40px;
+        }
+
+    }
+    .foto{
+        width: 200px;
+    }
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="container-nav">
+            <nav class="navbar">
+              <a href="#" class="brand">Mi página web</a>
+              <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </nav>
+            <button class="button-menu-toggle">Menu</button>
+          </div>
+    </header>
+
+    <main>
+        <h1>Nuestros servicios</h1>
+        <p>Descubre aquí los servicios que ofrecemos.</p>
+        <ul>
+          <li>Servicio 1</li>
+          <li>Servicio 2</li>
+          <li>Servicio 3</li>
+        </ul>
+    </main>
+
+    <hr>
+
+    <footer>
+        <form id="form">
+            <label>Quieres ser mi terapeuta personal? Deja tu Email aquí!
+                prometo hablarte de todos mis problemas e intereses aunque no te importe!
+            </label>
+            <input type="email" id="email">
+            <button type="submit">Enviar</button>
+            <p id="enviado"></p>
+        </form>
+    </footer>
+
+    <script>
+        document.querySelector("button.button-menu-toggle")
+            .addEventListener("click", function() {
+                document.querySelector(".nav-links").
+                        classList.toggle("nav-links-responsive")})
+                
+
+
+        const form = document.getElementById("form");
+        form.addEventListener("submit", function(){
+            event.preventDefault();
+
+        const email = document.getElementById("email").value
+        const enviado = document.getElementById("enviado")
+
+        if (!validateEmail(email)) {
+                enviado.style.color = "red";
+                enviado.innerText = "Correo Invalido";
+                return;
+            }
+        else{
+                enviado.style.color = "black";
+                enviado.innerText = "Enviado!";
+                return;
+        }
+
+    });
+
+    function validateEmail(email) {
+            // Expresión regular para validar el formato del correo electrónico
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+    }
+    </script>
+</body>
+</html>
